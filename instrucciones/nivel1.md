@@ -107,6 +107,26 @@ Para validar nuestro formulario, vamos a tener  que hacer lo siguiente:
 
   `const contieneSoloLetras = /^[A-z]+$/.test(valor);`
 
+^ => Empieza a chequear desde el inicio del texto
+[A-z]+ => Se aceptan caracteres que van desde la A hasta la z, el mas significa que puedan poner uno o mas
+$ => Indica que quiero que termine hasta ahi, con la ultima regla
+/. => Para indicar que deseamos que haya un punto, es necesario escaparlo utilizando el caracter '/'
+[@]{1} => Indica que solo esperamos un caracter, en este caso que esperamos que haya un solo caracter arroba
+/regex/i => El caracter 'i' al final de la regex indica que no importan las mayusculuas, por lo que A = a
+
+Ejemplos:
+Validacion de email
+/[A-z]+[@]{1}[A-z]+[.]{1}[A-z]/.test('asdasd@gmail.com')
+/[A-z]+[@]{1}[A-z]+[.]{1}[A-z]/
+/[A-z]+[@]{1}[A-z]+[.]{1}[A-z]/i.test('asdasd@gmail.com') => La 'i' indica que no importe si es mayuscula o no
+
+Validacion de Nombre y Apellido  (con espacio entre ellos)
+/[a-z]+ [a-z]+/i.test('Federico Infantino') == True
+/[a-z]+ [a-z]+/.test('Federico Infantino') == False
+
+[a-z0-9,\.-_] => Es necesario que para que cuando deseemos que utilice punto hay que escaparlo con un \
+
+
   Esto va a retornar un booleano. True si sólo contiene letras o false
   si no contiene sólo letras.
 
